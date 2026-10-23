@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Brand colors only, sampled from the Birria Barrio wordmark in their own posts: green #006838,
+   red #F80000 and white #F8F8F8 on black, plus tints and shades of them. The red-and-white
+   checker is the paper their food is served on. */
+@theme {
+  --color-ink: #0b0b0b;
+  --color-panel: #161616;
+  --color-verde: #006838;
+  /* Lighter green for small text on black: the wordmark green itself is 2.9:1 there. */
+  --color-verde-light: #3ec27a;
+  --color-rojo: #f80000;
+  /* Deeper reds for buttons with white text: white on the wordmark red is 4.2:1, below AA. */
+  --color-rojo-dark: #d10000;
+  --color-rojo-deep: #b80000;
+  --color-rojo-light: #ff4a4a;
+  --color-snow: #f8f8f8;
+  --color-mist: #b8b8b8;
+}
+
+/* `inline` so utilities reference the next/font variables directly rather than resolving them on :root. */
+@theme inline {
+  --font-blackletter: var(--font-unifraktur), "Old English Text MT", serif;
+  --font-display: var(--font-anton), Impact, "Arial Narrow", sans-serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-snow);
+}
+
+/* The red-and-white checkered paper from their trays. */
+.bg-checker {
+  background-color: var(--color-snow);
+  background-image: conic-gradient(
+    var(--color-rojo-dark) 0 25%,
+    transparent 0 50%,
+    var(--color-rojo-dark) 0 75%,
+    transparent 0
+  );
+  background-size: 28px 28px;
+}
+
+/* Tricolor rule, like the wordmark read left to right. */
+.bg-tricolor {
+  background: linear-gradient(
+    90deg,
+    var(--color-verde) 0 33.33%,
+    var(--color-snow) 33.33% 66.66%,
+    var(--color-rojo) 66.66% 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
